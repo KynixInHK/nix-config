@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+if [ -n "$1" ]; then
+    case "$1" in
+        vue)
+	    echo "You are initializing a Vue.js 3 project by vite..."
+            echo -n "Please input the project's name: "
+            read project_name
+	    echo "Please select a template: "
+	    templates=(
+		    "vanilla"
+		    "vanilla-ts"
+		    "vue"
+		    "vue-ts"
+		    "react" 
+		    "react-ts" 
+		    "preact" 
+		    "preact-ts" 
+		    "lit" 
+		    "lit-ts"
+		    "svelte"
+		    "svelte-ts"
+		    "solid"
+		    "solid-ts"
+		    "qwik"
+		    "qwik-ts") 
+	    select project_template in ${templates[@]}
+	    do
+		    break
+	    done
+	    # Running create_vue
+	    ./create_env_vue $project_name $project_template
+            ;;
+        springboot)
+	    echo "You are initializing a Springboot project by spring-cli..."
+	    echo -n "Please input the project's name: "
+	    read project_name
+	    echo "Please select the building tool: "
+	    build_tools=(
+	    	    "gradle"
+		    "maven"
+	    )
+	    select build_tool in ${build_tools[@]}
+	    do
+		    break
+	    done
+	    echo -n "Please input the package name: "
+	    read package_name
+	    # Running create_springboot
+	    ./create_env_springboot $project_name $build_tool $package_name
+            ;;
+        python)
+	    echo "You are initializing a Python project by python..."
+	    echo -n "Please input the project's name: "
+	    read project_name
+	    # Running create_python
+	    ./create_env_python $project_name
+            ;;
+        *)
+            echo "Invalid argument: $1"
+            ;;
+    esac
+else
+    echo "Please provide an argument for the project type."
+fi

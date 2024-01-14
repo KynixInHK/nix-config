@@ -43,5 +43,8 @@
       grim
       slurp
       wl-clipboard
+
+      # config
+      qq
     ];
   }

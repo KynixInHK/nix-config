@@ -164,6 +164,9 @@
     GDK_BACKEND = "x11";
     QT_QPA_PLATFORM="wayland";
     QT_WAYLAND_FORCE_DPI="144";
+    PATH = [ 
+      "/etc/nixos/scripts"
+    ];
   };
 
   # Fish

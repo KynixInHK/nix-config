@@ -30,6 +30,7 @@
 
     libnotify
     mako
+    direnv
 
   ];
 }

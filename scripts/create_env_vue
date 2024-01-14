@@ -1,0 +1,7 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p nodejs
+npm create vite@latest $1 -- --template $2
+cd $1
+npm install
+nix flake init --template github:KynixInHK/dev-templates#node
+direnv allow .

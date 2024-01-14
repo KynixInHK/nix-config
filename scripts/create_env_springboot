@@ -1,0 +1,7 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p jdk21 maven gradle spring-boot-cli
+java_version=21
+spring init --dependencies=web,lombok,data-jpa,mysql --build=$2 --package-name=$3 --java-version=21 $1
+cd $1
+nix flake init --template github:KynixInHK/dev-templates#java
+direnv allow .
