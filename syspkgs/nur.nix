@@ -13,5 +13,8 @@ in
   home.packages = with pkgs; [
     nur.repos.xddxdd.qqmusic
     nur.repos.xddxdd.bilibili
+    nur.repos.linyinfeng.wemeet
+    nur.repos.ataraxiasjel.waydroid-script
   ];
 }
+

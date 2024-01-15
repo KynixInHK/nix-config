@@ -189,4 +189,17 @@
     };
   };
 
+  # Waydroid
+  virtualisation.waydroid.enable = true;
+
+  # Firewall
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 53 67 ];
+  networking.firewall.allowedUDPPorts = [ 53 67 ];
+  networking.firewall.extraCommands = ''
+    iptables -P FORWARD ACCEPT
+  '';
+
+  # NTFS
+  boot.supportedFilesystems = [ "ntfs" ];
 }

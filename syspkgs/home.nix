@@ -46,5 +46,6 @@
 
       # config
       qq
+      zoom-us
     ];
   }
