@@ -46,6 +46,7 @@
 
       # config
       qq
-      zoom-us
+      teams-for-linux
+      localsend
     ];
   }

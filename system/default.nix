@@ -95,11 +95,13 @@
   # Enable bluetooth and opengl
   hardware = {
     bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
     opengl = {
       enable = true;
       driSupport = true;
     };
   };
+  services.blueman.enable = true;
 
   # Enable XDG integration and allow sway to use brillo
   #xdg = {
@@ -202,4 +204,8 @@
 
   # NTFS
   boot.supportedFilesystems = [ "ntfs" ];
+
+  # Kernel Modules
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
 }
