@@ -201,6 +201,9 @@
   networking.firewall.extraCommands = ''
     iptables -P FORWARD ACCEPT
   '';
+  networking.extraHosts = ''
+    140.82.112.3 github.com
+  '';
 
   # NTFS
   boot.supportedFilesystems = [ "ntfs" ];
