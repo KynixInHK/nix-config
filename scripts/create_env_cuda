@@ -1,0 +1,8 @@
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash -p python3 virtualenv
+mkdir $1
+cd $1
+virtualenv venv
+nix flake init --template github:KynixInHK/dev-templates#cuda-py
+echo "layout python3" >> ./.envrc
+direnv allow .

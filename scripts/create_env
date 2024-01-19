@@ -29,7 +29,7 @@ if [ -n "$1" ]; then
 		    break
 	    done
 	    # Running create_vue
-	    ./create_env_vue $project_name $project_template
+	    /etc/nixos/scripts/create_env_vue $project_name $project_template
             ;;
         springboot)
 	    echo "You are initializing a Springboot project by spring-cli..."
@@ -47,15 +47,22 @@ if [ -n "$1" ]; then
 	    echo -n "Please input the package name: "
 	    read package_name
 	    # Running create_springboot
-	    ./create_env_springboot $project_name $build_tool $package_name
+	    /etc/nixos/scripts/create_env_springboot $project_name $build_tool $package_name
             ;;
         python)
 	    echo "You are initializing a Python project by python..."
 	    echo -n "Please input the project's name: "
 	    read project_name
 	    # Running create_python
-	    ./create_env_python $project_name
+	    /etc/nixos/scripts/create_env_python $project_name
             ;;
+	cuda)
+	    echo "You are initializing a Python project with cuda ..."
+	    echo -n "Please input the project's name: "
+	    read project_name
+	    # Running create_cuda
+	    /etc/nixos/scripts/create_env_cuda $project_name
+	    ;;
         *)
             echo "Invalid argument: $1"
             ;;

@@ -96,10 +96,6 @@
   hardware = {
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
   };
   services.blueman.enable = true;
 
@@ -211,4 +207,48 @@
   # Kernel Modules
   boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
+
+  # Nvidia
+    # Enable OpenGL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = ["nvidia"];
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  hardware.nvidia = {
+
+    # Modesetting is required.
+    modesetting.enable = true;
+
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
+
+    # Use the NVidia open source kernel module (not to be confused with the
+    # independent third-party "nouveau" open source driver).
+    # Support is limited to the Turing and later architectures. Full list of 
+    # supported GPUs is at: 
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Only available from driver 515.43.04+
+    # Currently alpha-quality/buggy, so false is currently the recommended setting.
+    open = false;
+
+    # Enable the Nvidia settings menu,
+	# accessible via `nvidia-settings`.
+    nvidiaSettings = true;
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    # Prime
+    prime.intelBusId = "PCI:0:2:0";
+    prime.nvidiaBusId = "PCI:1:0:0";
+    prime.offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+  };
 }

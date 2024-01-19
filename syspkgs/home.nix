@@ -48,5 +48,10 @@
       qq
       teams-for-linux
       localsend
+      
+      # IDE
+      jetbrains.pycharm-professional
+      jetbrains.webstorm
+      jetbrains.idea-ultimate
     ];
   }
