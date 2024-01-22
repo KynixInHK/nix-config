@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib,... }:
 
 {
   imports =
@@ -16,7 +16,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.timeout = 0;
+  boot.loader.timeout = 5;
 
   networking.hostName = "code-station-nix";
 
@@ -251,4 +251,22 @@
       enableOffloadCmd = true;
     };
   };
+
+  # Tomcat
+  #services.tomcat = {
+  #  enable = true;
+  #  package = pkgs.tomcat10;
+  #  webapps = [ /etc/nixos/modules/tomcat ];
+  #};
+
+  # Caddy
+  services.caddy = {
+  enable = true;
+  virtualHosts."http://localhost" = {
+    extraConfig = ''
+      root    * /etc/nixos/modules/caddy/start_taiwan
+      file_server
+    '';
+  };
+};
 }

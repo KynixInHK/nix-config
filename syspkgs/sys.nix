@@ -32,5 +32,8 @@
     mako
     direnv
 
+    gcc
+    gdu
+    lua
   ];
 }

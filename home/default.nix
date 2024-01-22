@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, home-manager, hyprland, inputs, ... }: {
+{ config, pkgs, nixpkgs, home-manager, hyprland, inputs, lib, ... }: {
   
   # imports
   imports = [
@@ -36,4 +36,12 @@
 
   # Let home manager install and manage itself.
   programs.home-manager.enable = true; 
+
+  # NVIM
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    extraConfig = lib.fileContents ../modules/nvim/init.lua;
+  };
 }

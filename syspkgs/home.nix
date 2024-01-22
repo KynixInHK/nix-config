@@ -31,7 +31,6 @@
 
       # apps
       gimp # (pkgs.wrapGAppsHook.override { gappsWrapperArgs = [ "--set GDK_BACKEND wayland" ]; })
-      vscode
       obs-studio
       v2raya
 
@@ -50,8 +49,9 @@
       localsend
       
       # IDE
-      jetbrains.pycharm-professional
-      jetbrains.webstorm
       jetbrains.idea-ultimate
+      termius
+      vscode-with-extensions
+
     ];
   }
